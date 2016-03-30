@@ -20,7 +20,7 @@ object Runner {
       println(perception.define(Sigma.sigmoidium, Condition.isLessThanOne, Array(60, 11, 0, 0, 5, 5, 100, 0, 0, 10)))
       println(perception.define(Sigma.sigmoidium, Condition.isLessThanOne, Array(60, 9, 0, 0, 5, 5, 100, 0, 0, 10)))
       println(perception.define(Sigma.sigmoidium, Condition.isLessThanOne, Array(60, 7, 0, 0, 5, 5, 100, 0, 0, 10)))
-      println(perception.define(Sigma.sigmoidium, Condition.isLessThanOne, Array(60, 30, 12, 0, 5, 5, 100, 0, 0, 10)))
+      println(perception.define(Sigma.sigmoidium, Condition.isLessThanOne, Array(60, 11, 12, 0, 5, 5, 100, 0, 0, 10)))
     }
   }
 }

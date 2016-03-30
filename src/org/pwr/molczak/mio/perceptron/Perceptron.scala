@@ -4,21 +4,22 @@ import org.pwr.molczak.mio.utils.Parameter
 import org.pwr.molczak.mio.utils.Break
 import java.io.File
 import java.io.FileWriter
+import org.pwr.molczak.mio.utils.Break
 
 class Perceptron(data: Array[Parameter]) {
   val fileToWrite = new FileWriter("/home/booob/Documents/test.csv", true)
 
   val random = scala.util.Random
 
-  var threshold = 0.73
+  var threshold = 0.5
 
   val LEARNING_RATE = 0.1
 
-  var weights = Array(1.7, 1.1, 1.0, 1.5, 1.8, 2.0, 1.3, 1.4, 1.5, 1.1)
+  var weights = Array(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
   def learn(func: (Double) => (Double), condition: (Double, Double) => (Int)) = {
     try {
-      for (i <- 1 to 700) {
+      for (i <- 1 to 1500) {
         var errors = 0
 
         for (actualExample <- data) {
@@ -33,7 +34,7 @@ class Perceptron(data: Array[Parameter]) {
           if (diff != 0) {
             val newWeights = for {
               (parameter, weightIdx) <- (actualExample.values.zipWithIndex)
-              newWeightValue = weights(weightIdx) + (diff * LEARNING_RATE * weights(weightIdx))
+              newWeightValue = weights(weightIdx) + parameter * (diff * LEARNING_RATE)
             } yield newWeightValue
 
             weights = newWeights
@@ -42,8 +43,8 @@ class Perceptron(data: Array[Parameter]) {
 
             errors += 1
           }
-          fileToWrite.write(weights.mkString(", "))
-          fileToWrite.write("\n")
+//          fileToWrite.write(weights.mkString(", "))
+//          fileToWrite.write("\n")
         }
         if (errors == 0) {
           throw new Break()
